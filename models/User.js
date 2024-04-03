@@ -1,3 +1,4 @@
+//maybe put schema for bookmarks here?
 const { Schema, model, models } = require("mongoose");
 const bcrypt = require("bcrypt");
 

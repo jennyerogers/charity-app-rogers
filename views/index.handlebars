@@ -1,7 +1,11 @@
 {{> header}}
 <main>
-  <h1>This is the home page!</h1>
+  <h1>Welcome to Charity Connect!</h1>
   <p>Currently, you are {{#unless isLoggedIn}} NOT {{/unless}} logged in.</p>
   <p>You should {{#unless isLoggedIn}}NOT{{/unless}} be able to access <a href="/private">this page</a>.</p>
   <p>Use the header above to {{#if isLoggedIn}} logout{{else}} login or create an account{{/if}}.</p>
+  <form action="/search" method="GET">
+      <input type="text" name="charity" placeholder="Search for a cause">
+      <button type="submit">search</button>
+  </form>
 </main>

@@ -19,5 +19,12 @@ router.get("/signup", async (req, res) => {
 router.get("/private", checkAuth, ({ session: { isLoggedIn } }, res) => {
   res.render("protected", { isLoggedIn });
 });
+//display search
+// router.post("/search", controllers.charity.searchCharity);
+
+
+router.get("/search", checkAuth, ({ session: { isLoggedIn } }, res) => { //**I ADDED THIS */
+  res.render("index", { isLoggedIn });
+});
 
 module.exports = router;

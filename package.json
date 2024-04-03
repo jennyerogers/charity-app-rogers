@@ -23,7 +23,7 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",
-    "connect-mongodb-session": "^3.1.1",
+    "connect-mongodb-session": "^2.2.0",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "express-handlebars": "^6.0.6",
