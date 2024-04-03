@@ -9,7 +9,7 @@ async function searchCharity(charity) {
   //REQUEST URL EXAMPLE: `http://data.orghunter.com/v1/charitysearch?user_key=84ab8e10d8b97314b613fc278e73ebc1&searchTerm=${charity}`;
   try {
     const response = await axios.get(url);
-    console.log(response)
+    console.log(response.data)
     return response.data;
   } catch (error) {
     console.error(error);

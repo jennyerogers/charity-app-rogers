@@ -23,8 +23,9 @@ router.get("/private", checkAuth, ({ session: { isLoggedIn } }, res) => {
 // router.post("/search", controllers.charity.searchCharity);
 
 
-router.get("/search", checkAuth, ({ session: { isLoggedIn } }, res) => { //**I ADDED THIS */
-  res.render("index", { isLoggedIn });
+router.get("/search", async ({ session: { isLoggedIn, }, query: {charity} }, res) => { //**I ADDED THIS */
+  const charities= await controllers.charity.searchCharity (charity)
+  res.render("index", { isLoggedIn, charities });
 });
 
 module.exports = router;
