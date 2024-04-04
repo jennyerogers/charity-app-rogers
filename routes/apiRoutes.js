@@ -9,3 +9,4 @@ router.post("/signup", controllers.user.create);
 
 module.exports = router;
 //leave alone
+//routes handles all the available pages and all the different paths we can go to
