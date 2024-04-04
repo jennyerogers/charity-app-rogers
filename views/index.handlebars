@@ -7,6 +7,16 @@
   <form action="/search" method="GET">
       <input type="text" name="charity" placeholder="Search for a cause">
       <button type="submit">search</button>
-
   </form>
+   <h2>Search Results:</h2>
+  <ul>
+    {{#each charities}}
+      <li>
+        <h3>{{charityName}}</h3>
+        <p><a href="{{url}}">{{url}}</a></p>
+        <p>city: {{city}}</p>
+      </li>
+    {{/each}}
+  </ul>
+</main>
 </main>
