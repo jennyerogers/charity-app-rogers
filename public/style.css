@@ -93,6 +93,7 @@ header {
 }
 header a {
   margin: var(--space);
+  color: rgb(245, 241, 220);
 }
 footer {
   position: fixed;
@@ -101,6 +102,10 @@ footer {
   width: 100%;
   padding: 10 px 0;
   background-color: var(--black);
+  color: rgb(245, 241, 220);
+}
+footer a {
+  color: rgb(245, 241, 220);
 }
 header .site-logo {
   font-size: calc(var(--font-size) * 1.5);
@@ -110,7 +115,7 @@ header .site-logo {
 
 .site-logo {
   text-align: center;
-  color: var(--text-color);
+  color: rgb(245, 241, 220);
   text-decoration: none;
   margin: calc(var(--space) * 4) auto;
   display: block;
