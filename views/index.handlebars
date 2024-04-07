@@ -1,22 +1,28 @@
 {{> header}}
 <main>
   <h1>Welcome to Charity Connect!</h1>
-  <p>Currently, you are {{#unless isLoggedIn}} NOT {{/unless}} logged in.</p>
+  <p>Hello. Currently, you are {{#unless isLoggedIn}} NOT {{/unless}} logged in.</p>
   <p>You should {{#unless isLoggedIn}}NOT{{/unless}} be able to access <a href="/private">this page</a>.</p>
-  <p>Use the header above to {{#if isLoggedIn}} logout{{else}} login or create an account{{/if}}.</p>
-  <form action="/search" method="GET">
+  <p>Use the header above to {{#if isLoggedIn}} logout{{else}} login or create an account to start browsing charities{{/if}}.</p>
+
+    {{#if isLoggedIn}}
+     <form action="/search" method="GET">
       <input type="text" name="charity" placeholder="Search for a cause">
       <button type="submit">search</button>
   </form>
+  {{#if charities.data}}
    <h2>Search Results:</h2>
   <ul>
-    {{#each charities}}
+    {{#each charities.data}}
       <li>
-        <h3>{{charityName}}</h3>
-        <p><a href="{{url}}">{{url}}</a></p>
+        <h4>{{charityName}}</h4>
+        <p><a href="{{url}}">{{donationUrl}}</a></p>
         <p>City: {{city}}</p>
+        <p>State: {{state}}</p>
+        <p>Category: {{category}}</p>
       </li>
     {{/each}}
   </ul>
-</main>
+  {{/if}}
+{{/if}}
 </main>

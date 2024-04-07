@@ -16,8 +16,9 @@ async function login(req, res) {
 
     if (!passwordMatches)
       return res.redirect("/login?error=username or password is incorrect");
-
+//make a new controller file and pass 1. user_id and 2. charity_ein (should be passed from the front end)
     req.session.isLoggedIn = true;
+    //to store user._id in the session
     req.session.save(() => res.redirect("/"));
   } catch (err) {
     res.status(500).send(err.message);

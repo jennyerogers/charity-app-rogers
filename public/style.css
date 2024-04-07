@@ -1,11 +1,11 @@
 :root {
-  --black: #5d5b60;
+  --black: #45717a;
   --dark-grey: #171c1c;
   --light-grey: #a7b9b7;
   --primary: #102c70;
-  --primary-dark: #ffffff;
+  --primary-dark: #f4f3eb;
   --secondary: rgb(0, 0, 0);
-  --secondary-light: rgb(255, 255, 255);
+  --secondary-light: rgb(11, 11, 11);
   --text-color: rgb(0, 0, 0);
   --space: 16px;
   --font-size: 18px;
@@ -18,7 +18,7 @@ body {
   line-height: 1.5;
   padding: 0;
   margin: 0;
-  font-family: arial black, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -95,9 +95,11 @@ header a {
   margin: var(--space);
 }
 footer {
+  position: fixed;
   text-align: center;
-  padding: 5px;
-  margin-top: auto;
+  bottom: 0;
+  width: 100%;
+  padding: 10 px 0;
   background-color: var(--black);
 }
 header .site-logo {

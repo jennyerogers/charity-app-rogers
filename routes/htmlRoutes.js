@@ -21,8 +21,10 @@ router.get("/private", checkAuth, ({ session: { isLoggedIn } }, res) => {
 });
 //display search
 
-router.get("/search", async ({ session: { isLoggedIn }, query: {charity} }, res) => { //**I ADDED THIS */
-  const charities= await controllers.charity.searchCharity (charity) //the variable "charity" is the data coming from that function
+router.get("/search", checkAuth, async ({ session: { isLoggedIn }, query: {charity} }, res) => { //**I ADDED THIS */
+  const charities= await controllers.charity.searchCharity (charity) 
+  //res.json(charities);
+   //the variable "charity" is the data coming from that function
   res.render("index", { isLoggedIn, charities }); //need a templates page, make a new handlebar file and pass in the data, then const wont be grayed out
 
 });
