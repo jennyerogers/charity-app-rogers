@@ -23,7 +23,7 @@ const UserSchema = new Schema(
       charityName: String, 
       url: String,
       city: String, 
-
+//am i writing this right
     }
 
   },
