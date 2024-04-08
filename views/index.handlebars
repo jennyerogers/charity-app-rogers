@@ -1,14 +1,19 @@
 {{> header}}
 <main>
   <h1>Welcome to Charity Connect!</h1>
-  <p>Currently, you are {{#unless isLoggedIn}} NOT {{/unless}} logged in.</p>
-  <p>Use the header above to {{#if isLoggedIn}} logout{{else}} login or create an account and start browsing charities{{/if}}.</p>
-
-    {{#if isLoggedIn}}
-     <form action="/search" method="GET">
+   <img src="/public/charitypic.png" alt="Charity Pic">
+  {{#unless isLoggedIn}}
+    <p>Please login or create an account to start browsing charities.</p>
+    <button class="btn" onclick="window.location.href='/login'">Login</button>
+    <button class="btn" onclick="window.location.href='/signup'">Sign Up</button>
+  {{/unless}}
+  
+  {{#if isLoggedIn}}
+    <form action="/search" method="GET">
       <input type="text" name="charity" placeholder="Search for a cause">
       <button type="submit">search</button>
-  </form>
+    </form>
+
   {{#if charities.data}}
    <h2>Search Results:</h2>
   <ul>

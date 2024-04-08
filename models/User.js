@@ -19,12 +19,12 @@ const UserSchema = new Schema(
       //so either create a whole new charity model OR create just a schema and link the schema after password. examples of both in the m8 homework
       //m8 hw has tags (their own model) and posts (seperate collections i think)
     },
-    charity: {
+    charitySaved: [ { //do i need to include charitySaved somewhere else? //add charitySchema
       charityName: String, 
       url: String,
       city: String, 
 //am i writing this right
-    }
+    }]
 
   },
   {
