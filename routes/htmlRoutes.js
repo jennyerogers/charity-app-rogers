@@ -30,4 +30,3 @@ router.get("/search", checkAuth, async ({ session: { isLoggedIn }, query: {chari
 });
 
 module.exports = router;
-//this is for the handlebars template
