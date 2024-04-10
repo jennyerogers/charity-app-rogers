@@ -53,4 +53,3 @@ router.post("/removeFavoriteCharity", checkAuth, controllers.favorite.removeFavo
 
 module.exports = router;
 
-//need a templates page, make a new handlebar file and pass in the data, then const wont be grayed out
