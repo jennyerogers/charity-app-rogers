@@ -1,2 +1,19 @@
- {{> header}}
-<main></main>
+{{> header}}
+
+<main>
+    <h1>Favorite Charities</h1>
+    <ul>
+        {{#each favoriteCharities}}
+            <li>
+                <h4>{{this.charityName}}</h4>
+                <p>EIN: {{this.ein}}</p>
+                <p><a href="{{this.url}}">{{this.donationUrl}}</a></p>
+                <p>City: {{this.city}}</p>
+                <p>State: {{this.state}}</p>
+                <p>Category: {{this.category}}</p>
+            </li>
+        {{/each}}
+    </ul>
+</main>
+
+{{> footer}}

@@ -12,24 +12,14 @@ const UserSchema = new Schema(
       type: String,
       required: true,
       minLength: 5,
-      maxLength: 20, //add charities field to link to either another schema for whatever infrmation you wanna save per charity or a list of IDs to link to each charity.
-      //so either create a whole new charity model OR create just a schema and link the schema after password. examples of both in the m8 homework
-      //m8 hw has tags (their own model) and posts (seperate collections i think)
+      maxLength: 20, 
     },
     favoriteCharities: [
       {
-        charityName: String,
-        donationUrl: String,
-        city: String,
-        state: String,
-        
+        type: Schema.Types.ObjectId,
+        ref: 'Charities'
       }
     ]
-   
- //take the variable and put it inside charity saved: charitySaved
- 
-//make your own id and nest the schema
-//if i were to nest the data, i would have a charity model nested under user to find the user and use find.update... OR find the user and do the javascript that says user.charities.addtoset (example) push
   },
   {
     methods: {
@@ -53,9 +43,8 @@ module.exports = models.User || model("User", UserSchema);
 //or if it was a seperate collection, it would be charities, then schema type, object ids...so either the charity objects themselves will be an array here, or an array of IDs of each charity object
 
 //add charities field to link to either another schema for whatever infrmation you wanna save per charity or a list of IDs to link to each charity.
-
-// charitySaved: [ { //do i need to include charitySaved somewhere else? //add charitySchema
-//charityName: String, 
-//url: String,
-//city: String, 
-//}]
+//so either create a whole new charity model OR create just a schema and link the schema after password. examples of both in the m8 homework
+ //take the variable and put it inside charity saved: charitySaved
+ 
+//make your own id and nest the schema
+//if i were to nest the data, i would have a charity model nested under user to find the user and use find.update... OR find the user and do the javascript that says user.charities.addtoset (example) push
