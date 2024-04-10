@@ -21,13 +21,31 @@ router.get("/private", checkAuth, ({ session: { isLoggedIn } }, res) => {
 });
 //display search
 
-router.get("/search", checkAuth, async ({ session: { isLoggedIn }, query: {charity} }, res) => { //**I ADDED THIS */
-  const charities= await controllers.charity.searchCharity (charity) 
-  //res.json(charities);
-   //the variable "charity" is the data coming from that function
-  res.render("index", { isLoggedIn, charities }); //need a templates page, make a new handlebar file and pass in the data, then const wont be grayed out
+router.get("/search", checkAuth, async ({ session: { isLoggedIn }, query: { charity } }, res) => {
+  try {
+    const charitiesData = await controllers.charity.searchCharity(charity);
+    const charities = [];
 
+    charitiesData.data.forEach(charityObject => {
+      charities.push({
+        charityName: charityObject.charityName,
+        ein: charityObject.ein,
+        url: charityObject.url,
+        donationUrl: charityObject.donationUrl,
+        city: charityObject.city,
+        state: charityObject.state,
+        category: charityObject.category,
+        data: JSON.stringify(charityObject)
+      });
+    });
+
+    res.render("index", { isLoggedIn, charities });
+  } catch (error) {
+    console.error("error in rendering search page:", error);
+    res.status(500).send("server error");
+  }
 });
 
 module.exports = router;
+
 //need a templates page, make a new handlebar file and pass in the data, then const wont be grayed out
