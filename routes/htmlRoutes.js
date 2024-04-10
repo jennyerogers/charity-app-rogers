@@ -46,6 +46,11 @@ router.get("/search", checkAuth, async ({ session: { isLoggedIn }, query: { char
   }
 });
 
+router.post("/addFavoriteCharity", checkAuth, controllers.favorite.addFavoriteCharity);
+
+router.post("/removeFavoriteCharity", checkAuth, controllers.favorite.removeFavoriteCharity)
+
+
 module.exports = router;
 
 //need a templates page, make a new handlebar file and pass in the data, then const wont be grayed out
