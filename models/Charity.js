@@ -30,5 +30,4 @@ const CharitySchema = new Schema(
   },
 );
 
-
-module.exports = models.charityModel || model("Charity", CharitySchema);
+module.exports = CharitySchema 
