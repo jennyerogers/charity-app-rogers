@@ -38,6 +38,7 @@ UserSchema.pre("save", async function (next) {
 });
 
 module.exports = models.User || model("User", UserSchema);
+
 //so either under the schema, i could have a field for charities and that would nest the information with its own charity schema with charities [charity schema] 
 //or if it was a seperate collection, it would be charities, then schema type, object ids...so either the charity objects themselves will be an array here, or an array of IDs of each charity object
 
