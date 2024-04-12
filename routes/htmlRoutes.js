@@ -15,12 +15,11 @@ router.get("/signup", async (req, res) => {
   if (req.session.isLoggedIn) return res.redirect("/");
   res.render("signup", { error: req.query.error });
 });
-//maybe add /favorites
+
 router.get("/private", checkAuth, ({ session: { isLoggedIn } }, res) => {
   res.render("protected", { isLoggedIn });
 });
 //display search
-
 router.get("/search", checkAuth, async ({ session: { isLoggedIn }, query: { charity } }, res) => {
   try {
     const charitiesData = await controllers.charity.searchCharity(charity);
@@ -46,10 +45,9 @@ router.get("/search", checkAuth, async ({ session: { isLoggedIn }, query: { char
   }
 });
 
-router.post("/addFavoriteCharity", checkAuth, controllers.favorite.addFavoriteCharity);
+router.post("/favorite", checkAuth, controllers.favorite.addFavoriteCharity); //check this
 
-router.post("/removeFavoriteCharity", checkAuth, controllers.favorite.removeFavoriteCharity)
-
+router.post("/removeFavoriteCharity", checkAuth, controllers.favorite.removeFavoriteCharity);
 
 module.exports = router;
 

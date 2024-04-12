@@ -1,7 +1,9 @@
 {{> header}}
 <main>
   <h1>Welcome to Charity Connect</h1>
-   <img src="../public/charitypic.png" alt="Charity Pic">
+  <div class="photo-container">
+    <img src= "charitypic.png" style="width: 200px; height: auto;">
+  </div>
   {{#unless isLoggedIn}}
     <p>Please login or create an account to start browsing charities.</p>
     <button class="btn" onclick="window.location.href='/login'">Login</button>
@@ -38,8 +40,12 @@
   console.log (favoriteButtons)
   favoriteButtons.forEach((favoriteButton)=>{
     favoriteButton.addEventListener("click",()=>{
-      //console.log ("hi")
+      //do i have to use stringify, fetch, etc if i just create a post request?
       console.log (JSON.stringify(favoriteButton.dataset.charity))
     })
   })
 </script>
+
+  <!-- When you "add to favorites" you should be using a POST method from your HTML form, 
+  and then in the Express route you can use res.redirect("/favorites") 
+  to send the user to a different GET route to reload the HTML -->

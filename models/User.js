@@ -17,7 +17,10 @@ const UserSchema = new Schema(
       maxLength: 20, 
     },
     favoriteCharities: [
-      charitySchema
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Charities'
+      }
     ]
   },
   {

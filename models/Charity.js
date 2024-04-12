@@ -30,4 +30,4 @@ const CharitySchema = new Schema(
   },
 );
 
-module.exports = CharitySchema
+module.exports = model("Charity", CharitySchema);

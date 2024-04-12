@@ -21,7 +21,12 @@ async function addFavoriteCharity(req, res) {
       res.status(500).send(err.message);
     }
   }
+//INSERT GET FUNCTION
 
+//When you "add to favorites" you should be using a POST method from your HTML form, 
+//and then in the Express route you can use res.redirect("/favorites") 
+//to send the user to a different GET route to reload the HTML -->
+//do i put res.redirect here?
 async function removeFavoriteCharity(req, res) {
   try {
     const { ein } = req.body; 
