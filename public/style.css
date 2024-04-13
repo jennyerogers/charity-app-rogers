@@ -148,6 +148,36 @@ header .site-logo {
 .photo-container {
   margin-bottom: 20px; 
 }
+ul {
+  margin-bottom: calc(var(--space) * 6); 
+  list-style-type: none; 
+  padding-left: 0; 
+  margin-left: 0; 
+}
+
+li {
+  background-color: #d8e5e6;
+  border-radius: 10px; 
+  padding: 16px; 
+  margin-bottom: 16px; 
+  list-style-type: none; 
+  position: relative; 
+}
+
+.favorite-btn {
+  font-size: 40px; 
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  position: absolute; 
+  top: 10px; 
+  right: 10px;
+}
+
+.favorite-btn:hover {
+  color: gold;
+}
+
 
 @media screen and (max-width: 700px) {
   .site-logo {
