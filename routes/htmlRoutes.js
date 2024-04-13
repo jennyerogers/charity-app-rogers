@@ -58,9 +58,6 @@ async (req, res) =>{
   res.render("favorite", { isLoggedIn, user})
 }
 );
-
-
-
 router.post("/favorites", checkAuth, async (req, res) => {
   try {
     const { ein } = req.body;
