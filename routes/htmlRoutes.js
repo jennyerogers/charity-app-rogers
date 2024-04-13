@@ -59,8 +59,30 @@ async (req, res) =>{
 }
 );
 
+//to remove favorites: find user by session ID, do the same validation as 53-57 to make sure it exists, userentry.favoritecharities, look for the particular entry inside there that has the 
+//ID of the charity we're trying to remove, and pluck that one out
+//await.user save
 
-router.post("/removeFavoriteCharity", checkAuth, controllers.favorite.removeFavoriteCharity);
+
+router.post ("/favorites", checkAuth, async (req, res) => {
+  try {
+  const { ein } = req.body; 
+  const {userid, isLoggedIn } = req.session
+  const user = await User.findById(userid).populate("favoriteCharities").lean()
+  if (!user) {
+    return res.status(404).json({ error: "User not found" });
+  }
+   
+    user.favoriteCharities = user.favoriteCharities.filter(charity => charity.ein !== ein);
+
+    await User.updateOne({ _id: userid }, { $set: { favoriteCharities: user.favoriteCharities } });
+
+    res.status(200).json({ message: "Charity removed from favorites successfully" });
+  } catch (error) {
+    console.error("Error removing charity from favorites:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+})
 
 module.exports = router;
 

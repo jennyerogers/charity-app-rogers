@@ -1,7 +1,8 @@
 {{> header}}
 
-<main>
+<main style="margin-bottom: 100px">
     <h1>Favorite Charities</h1>
+    <p>Click the "X" symbol to remove a charity and update your list.</p>
     <ul>
         {{#each user.favoriteCharities}}
             <li>
@@ -11,14 +12,12 @@
                 <p>City: {{this.city}}</p>
                 <p>State: {{this.state}}</p>
                 <p>Category: {{this.category}}</p>
+                <form action="/favorites" method="post">
+                    <input type="hidden" name="data" value="{{ein}}" />
+                    <button class="remove-btn" style="color: red; font-size: 20px; font-weight: bold;">❌</button>
+                </form>
+
             </li>
         {{/each}}
     </ul>
 </main>
-<form action="/favorites" method="post">
-        <input type="hidden" name="data" value="{{ein}}" />
-        <button class="remove-btn"> Remove from Favorites </button>
-      </form>
-  <!-- When you "add to favorites" you should be using a POST method from your HTML form, 
-  and then in the Express route you can use res.redirect("/favorites") 
-  to send the user to a different GET route to reload the HTML -->

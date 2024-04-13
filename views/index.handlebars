@@ -17,7 +17,8 @@
   </form>
 
   {{#if charities}}
-  <h2>Search Results:</h2>
+  <h3>Search Results:</h3>
+   <p>Click the star icon to add a charity to your favorites list.</p>
   <ul>
     {{#each charities}}
     <li>
@@ -27,9 +28,9 @@
       <p>City: {{city}}</p>
       <p>State: {{state}}</p>
       <p>Category: {{category}}</p>
-      <form action="/favorites" method="post">
+       <form action="/favorites" method="post">
         <input type="hidden" name="data" value="{{data}}" />
-        <button class="favorite-btn"> Add to Favorites </button>
+        <button class="favorite-btn" type="submit">&#9733;</button>
       </form>
     </li>
     {{/each}}
@@ -37,18 +38,21 @@
   {{/if}}
   {{/if}}
 </main>
-{{!--
-<script>
+<style>
+    .favorite-btn {
+        font-size: 40px; /* Adjust based on the size of the star */
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+    }
+     /* When the button is hovered over */
+    .favorite-btn:hover {
+        color: gold;
+    }
+</style>
 
-  //const favoriteButtons = document.querySelectorAll (".favorite-btn")
-  console.log(favoriteButtons)
-  favoriteButtons.forEach((favoriteButton) => {
-    favoriteButton.addEventListener("click", () => {
-      //do i have to use stringify, fetch, etc if i just create a post request?
-      console.log(JSON.stringify(favoriteButton.dataset.charity))
-    })
-  })
-</script> --}}
+<script></script>
+
 
 <!-- When you "add to favorites" you should be using a POST method from your HTML form, 
   and then in the Express route you can use res.redirect("/favorites") 
