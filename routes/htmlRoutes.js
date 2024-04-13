@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const controllers = require("../controllers");
 const checkAuth = require("../middleware/auth");
+const { User } = require("../models");
 
 router.get("/", ({ session: { isLoggedIn } }, res) => {
   res.render("index", { isLoggedIn });
@@ -45,9 +46,24 @@ router.get("/search", checkAuth, async ({ session: { isLoggedIn }, query: { char
   }
 });
 
-router.post("/favorite", checkAuth, controllers.favorite.addFavoriteCharity); //check this
+router.post("/favorites", checkAuth, controllers.favorite.addFavoriteCharity); //check this
+
+router.get("/favorites", checkAuth, 
+async (req, res) =>{
+  const {userid, isLoggedIn } = req.session
+  const user = await User.findById(userid).populate("favoriteCharities").lean()
+  if (!user) {
+    return res.status(404).json({ error: "User not found" });
+  }
+  res.render("favorite", { isLoggedIn, user})
+}
+);
+
 
 router.post("/removeFavoriteCharity", checkAuth, controllers.favorite.removeFavoriteCharity);
 
 module.exports = router;
 
+//When you "add to favorites" you should be using a POST method from your HTML form, 
+//and then in the Express route you can use res.redirect("/favorites") 
+//to send the user to a different GET route to reload the HTML -->

@@ -1,8 +1,6 @@
 const { Schema, model, models } = require("mongoose");
 const bcrypt = require("bcrypt");
 
-const charitySchema = require("./Charity")
-
 const UserSchema = new Schema(
   {
     username: {
@@ -13,13 +11,11 @@ const UserSchema = new Schema(
     password: {
       type: String,
       required: true,
-      minLength: 5,
-      maxLength: 20, 
     },
     favoriteCharities: [
       {
         type: Schema.Types.ObjectId,
-        ref: 'Charities'
+        ref: 'Charity'
       }
     ]
   },
