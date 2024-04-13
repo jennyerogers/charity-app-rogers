@@ -12,8 +12,8 @@
                 <p>City: {{this.city}}</p>
                 <p>State: {{this.state}}</p>
                 <p>Category: {{this.category}}</p>
-                <form action="/favorites" method="post">
-                    <input type="hidden" name="data" value="{{ein}}" />
+                <form action="/favorites" method="POST">
+                    <input type="hidden" name="ein" value="{{ein}}" />
                     <button class="remove-btn" style="color: red; font-size: 20px; font-weight: bold;">❌</button>
                 </form>
 

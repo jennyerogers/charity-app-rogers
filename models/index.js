@@ -3,4 +3,3 @@ const Charity = require("./Charity");
 
 module.exports = { User, Charity };
 
-//models define what data is being stored in the database

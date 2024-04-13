@@ -5,6 +5,7 @@
     <img src="charitypic.png" style="width: 200px; height: auto;">
   </div>
   {{#unless isLoggedIn}}
+  <p><span style="font-weight: bold; font-style: italic;">Find your cause today.</span></p>
   <p>Please login or create an account to start browsing charities.</p>
   <button class="btn" onclick="window.location.href='/login'">Login</button>
   <button class="btn" onclick="window.location.href='/signup'">Sign Up</button>
@@ -24,7 +25,7 @@
     <li>
       <h4>{{charityName}}</h4>
       <p>ein: {{ein}}</p>
-      <p><a href="{{url}}">{{donationUrl}}</a></p>
+      <p><a href="{{url}}" class="donation-link">{{donationUrl}}</a></p>
       <p>City: {{city}}</p>
       <p>State: {{state}}</p>
       <p>Category: {{category}}</p>
@@ -40,12 +41,11 @@
 </main>
 <style>
     .favorite-btn {
-        font-size: 40px; /* Adjust based on the size of the star */
+        font-size: 40px; 
         border: none;
         background-color: transparent;
         cursor: pointer;
     }
-     /* When the button is hovered over */
     .favorite-btn:hover {
         color: gold;
     }
@@ -53,7 +53,3 @@
 
 <script></script>
 
-
-<!-- When you "add to favorites" you should be using a POST method from your HTML form, 
-  and then in the Express route you can use res.redirect("/favorites") 
-  to send the user to a different GET route to reload the HTML  <!

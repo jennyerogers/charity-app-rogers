@@ -5,4 +5,3 @@ const MONGODB_URI = process.env.MONGODB_URI ||
 mongoose.connect(MONGODB_URI);
 
 module.exports = { connection: mongoose.connection, MONGODB_URI };
-//this is a helper for the database

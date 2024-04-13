@@ -22,24 +22,26 @@ async function addFavoriteCharity(req, res) {
     }
   }
 
-
-//INSERT GET FUNCTION
-
-//When you "add to favorites" you should be using a POST method from your HTML form, 
-//and then in the Express route you can use res.redirect("/favorites") 
-//to send the user to a different GET route to reload the HTML -->
-//do i put res.redirect here?
-
 async function removeFavoriteCharity(req, res) {
   try {
     const { ein } = req.body; 
     const { userid } = req.session;
-    await User.updateOne({ _id: userid }, { $pull: { favoriteCharities: ein } });
+    const user = await User.findById(userid);
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+    const charity = await Charity.findOneAndDelete({ ein });
+    if (!charity) {
+      return res.status(404).json({ error: "Charity not found" });
+    }
+    user.favoriteCharities.pull(charity._id); // remove the charity from the user's favorite charities array
+    await user.save();
     res.status(204).send(); 
   } catch (err) {
     res.status(500).send(err.message); 
   }
 }
+
 //removes favorite charity, checks if user exits, removes charity by ein, send response
 module.exports = {
   addFavoriteCharity,removeFavoriteCharity
